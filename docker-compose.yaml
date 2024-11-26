@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: escapes
+      POSTGRES_PASSWORD: escapes
+
+  server:
+    build: .
+    depends_on:
+      - db
+    image: testportal
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      ALLOWED_HOSTS: "*"
+      DB_USER: escapes
+      DB_PASSWORD: escapes
+      SECRET_KEY: uu%t_4*ee1m=l&cr_cg^qd-)0wfc^#jvia67qo-kd&s=-k1fxn
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: escapes
+      CORS_ALLOWED_ORIGINS: ""
+      CSRF_TRUSTED_ORIGINS: "http://*"

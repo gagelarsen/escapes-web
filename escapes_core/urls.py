@@ -7,6 +7,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', include('testportal.urls', namespace='testportal')),
-    path('api/', include('testportal_api.urls', namespace='testportal_api')),
+    path('', include('escapes.urls', namespace='escapes')),
+    path('api/', include('escapes_api.urls', namespace='escapes_api')),
 ]
